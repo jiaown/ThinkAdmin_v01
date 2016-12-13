@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/ad/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/ad/css/main.css"/>
+    <script type="text/javascript" src="__PUBLIC__/ad/js/libs/modernizr.min.js"></script>
+    <script src="__PUBLIC__/ueditor/ueditor.config.js"></script>
+    <script src="__PUBLIC__/ueditor/ueditor.all.min.js"></script>
+    <script src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+</head>
+<body>
+<include file="Common/top"/>
+<div class="container clearfix">
+    <include file="Common/left"/>
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('Index/index')}">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="{:U('Artice/lst')}">文章管理</a><span class="crumb-step">&gt;</span><span>修改分类</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <input name="id" type="hidden" value="{$info.id}">
+                    <table class="insert-tab" width="100%">
+                        <tbody><tr>
+                            <th width="120"><i class="require-red">*</i>上级分类：</th>
+                            <td>
+                                <select name="cateid" id="cateid" class="required">
+                                    <foreach name="cates" item="vo">
+                                            <option value="{$vo.cateid}" <if condition="$info['cateid'] eq $vo['cateid']"> selected="selected"</if> >
+                                                <?php echo str_repeat('|----',$vo[level]);?>{$vo.name}
+                                            </option>
+                                    </foreach>
+                                </select>
+                            </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>文章名称：</th>
+                                <td>
+                                    <input class="common-text required" id="title" name="title" size="50" value="{$info.title}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th><i class="require-red">*</i>文章作者：</th>
+                                <td>
+                                    <input class="common-text required" id="author" name="author" size="50" value="{$info.author}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>SEO关键词：</th>
+                                <td><input class="common-text" name="keywords" size="50" value="{$info.keywords}" type="text"></td>
+                            </tr>
+                            <tr>
+                                <th>SEO描述：</th>
+                                <td><textarea name="des" class="common-textarea" cols="58" rows="6">{$info.des}</textarea></td>
+                            </tr>
+                            <tr>
+                                <th>是否推荐：</th>
+                                <td><input type="checkbox" name="rem" value="1" <if condition="$info['rem'] eq 1">checked="checked"</if> ></td>
+                            </tr>
+                            
+                            <tr>
+                                <th><i class="require-red">*</i>缩略图：</th>
+                                <td><input name="pic" type="file"><if condition="$info['pic'] eq ''">暂无图片<else/><img src="__ROOT__{$info.pic}" style="height:30px;"></if></td>
+                            </tr>
+                            <tr>
+                                <th>文章简介：</th>
+                                <td><textarea name="brief" class="common-textarea" cols="58" rows="7">{$info.brief}</textarea></td>
+                            </tr>
+                            <tr>
+                                <th>内容：</th>
+                                <td><textarea name="content" class="common-textarea" id="content" cols="30" style="width: 98%;">{$info.content}</textarea></td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody></table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    var ue = UE.getEditor('content',{initialFrameHeight:400,wordCount:false,elementPathEnabled:false});
+</script>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>后台管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/ad/css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/ad/css/main.css"/>
+    <script type="text/javascript" src="__PUBLIC__/ad/js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<include file="Common/top"/>
+<div class="container clearfix">
+    <include file="Common/left"/>
+    <!--/sidebar-->
+    <div class="main-wrap">
+
+        <div class="crumb-wrap">
+            <div class="crumb-list"><i class="icon-font"></i><a href="{:U('Index/index')}">首页</a><span class="crumb-step">&gt;</span><a class="crumb-name" href="{:U('Role/lst')}">角色管理</a><span class="crumb-step">&gt;</span><span>修改角色</span></div>
+        </div>
+        <div class="result-wrap">
+            <div class="result-content">
+                <form action="" method="post" id="myform" name="myform" enctype="multipart/form-data">
+                    <input name="id" type="hidden" value="{$roles.id}">
+                    <table class="insert-tab" width="100%">
+                        <tbody>
+                            <tr> 
+                                <th width="120"><i class="require-red">*</i>角色名称：</th>
+                                <td>
+                                    <input class="common-text required" id="rolename" name="rolename" size="50" value="{$roles.rolename}" type="text">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th width="120"><i class="require-red">*</i>权限列表：</th>
+                                <td>
+                                    <ul>
+                                        <?php foreach($prires as $k=>$v): 
+                                            if(strpos(','.$roles['pri_id_list'].',',','.$v['id'].',')!==false){
+                                                $check="checked='checked'";
+                                            }else{
+                                                $check="";
+                                            }
+                                        ?>
+                                            <li level=<?php echo $v['level'];?> ><input <?php echo $check;?> type="checkbox" name="pri_id_list[]" value="<?php echo $v['id'];?>">
+                                            <?php echo str_repeat('|----',$v['level']).$v['pri_name'];?></li>
+                                        <?php endforeach;?>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>
+                                    <input class="btn btn-primary btn6 mr10" value="提交" type="submit">
+                                    <input class="btn btn6" onclick="history.go(-1)" value="返回" type="button">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--/main-->
+</div>
+</body>
+</html>
+<script type="text/javascript">
+    $(function(){
+        $(':checkbox').click(function(){
+            var cur_li = $(this).parent();
+            var checked = $(this).attr('checked');
+            var level = cur_li.attr('level');
+            cur_li.prevAll('li').each(function(){
+                 if($(this).attr('level') < level && checked){
+                    $(this).find(':checkbox').attr('checked','checked');
+                    if($(this).attr('level')==0){
+                        return false;
+                    }
+                 }
+            });
+
+            if(!checked){
+                cur_li.nextAll('li').each(function(){
+                 if($(this).attr('level') > level){
+                    $(this).find(':checkbox').removeAttr('checked');
+                  }else{
+                    return false;
+                  }
+                });    
+            }
+        });
+    });
+</script>

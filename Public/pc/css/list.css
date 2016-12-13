@@ -1,0 +1,66 @@
+﻿body
+{
+    background-image: none;
+    background-color: #dedede;
+    color: #999999;
+    font-family: "Microsoft Yahei" , "Helvetica Neue" ,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    height: 100%;
+    text-align: left;
+    width: 100%;
+}
+#xh_container
+{
+    min-height: 1000px;
+    background-color: #dedede;
+    margin-top: 36px;
+    width: 1098px;
+}
+#wrapper
+{
+    background-color: #dedede;
+}
+#l-nav
+{
+    background-image: url('__PUBLIC__/pc/images/look-bike-nav-bg.png');
+    width: 188px;
+    height: 360px;
+    float: left;
+}
+#l-nav a
+{
+    font-size: 14px;
+    color: #000000;
+}
+#l-nav a:hover
+{
+    font-size: 14px;
+    color: #999999;
+}
+#l-nav div
+{
+    padding-left: 20px;
+}
+#l-nav .l-nav-word
+{
+    height: 40px;
+    line-height: 40px;
+}
+#l-focus
+{
+    float: right;
+}
+img
+{
+    vertical-align: middle;
+}
+
+div
+{
+    color: #666666;
+}
+#menu-item-196 a.a,#menu-item-198 a.a,#menu-item-197 a.a{color: #00BBEE;}
+#menu-item-198{ background-image:url('__PUBLIC__/pc/images/up-arrow.png'); background-position: center bottom; background-repeat:no-repeat;} 
+.boxBor{
+position:absolute;left:0;top:0;display:none;z-index:9999; background-color:#ffffff;opacity: 0.3;filter:alpha(opacity=30)
+}
