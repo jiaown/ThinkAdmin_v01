@@ -28,7 +28,7 @@ RBAC
 ......
 项目地址
 
-Github:https://github.com/cnsecer/ThinkAdmin
+Github:https://github.com/jiaown/ThinkAdmin_v01
 
 博客: http://www.jiaown.com
 
