@@ -1,4 +1,4 @@
-﻿欢迎使用ThinkPHP通用管理后台
+欢迎使用ThinkPHP通用管理后台
 
 这是一套基于ThinkPHP的通用管理后台,已经开发好了CMS基本的功能,在开发中可以直接拿来使用,然后在本后台基础上继续开发,相信可以为你节省不少时间：）
 
@@ -34,4 +34,4 @@ Github:https://github.com/cnsecer/ThinkAdmin
 
 联系我
 
-QQ群:316231881
+QQ:316231881
